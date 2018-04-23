@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<title>Index page</title>
+    <base href="/">
+    <meta charset="utf-8">
+    
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    
+    
+    <!-- Main Angular files -->
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-animate.js"></script>
+    <script src="assets/js/angular-route.js"></script>
+    
+    
+    <!-- Angular config/Routes -->
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+        
+    <!-- Angular Controllers -->
+    <script src="app/controllers/userCtrl.js"></script>
+    <script src="app/controllers/mainCtrl.js"></script>
+    
+    <!-- Angular Services -->
+    <script src="app/services/userServices.js"></script>
+    <script src="app/services/authServices.js"></script>
+
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+
+</head>
+<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-clook>
+    
+      <header>
+
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+
+        <ul class="nav navbar-nav">
+            <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a ng-show="!main.isLoggedIn" href="/register"><i class="fa fa-user"></i>Register</a></li>
+          <li><a ng-show="!main.isLoggedIn" href="/login"><i class="fa fa-login"></i>Login</a></li>
+            <li><a ng-show="main.isLoggedIn" href="/profile"><i class="fa fa-user"></i>{{main.username}}</a></li>
+            <li><a ng-show="main.isLoggedIn" href="#" ng-click="main.logout();"><i class="fa fa-logout" ></i>Logout</a></li>
+
+        </ul>
+
+        </div>
+      </nav>
+    </header>
+    
+    <div ng-view></div>
+
+    <!-- Modal 1 (Basic)-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">{{main.modalHeader}}</h4>
+    </div>
+    
+    <div class="modal-body">
+    {{main.modalBody}}
+    </div>
+    
+    <div class="modal-footer">
+      <button type="button" ng-click="main.renewSession();" class="btn btn-primary" data-dismiss="modal">Yes</button>
+      <button type="button" ng-click="main.endSession();" class="btn btn-danger" data-dismiss="modal">No</button>
+    </div>
+    </div>
+  </div>
+  </div>
+  
+    
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+     <script src="assets/js/toastr.min.js"></script>
+</body>
+</html>
